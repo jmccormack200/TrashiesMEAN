@@ -1,15 +1,10 @@
-var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
+const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
+const Category = require('./category.model');
 
 var ContestSchema = new mongoose.Schema({
     title: String,
-    categories: [{
-        title: String,
-        contestants: [{
-            name: String,
-            url: String
-        }]
-    }]
+    categories: [Category]
 });
 
 ContestSchema.plugin(mongoosePaginate);

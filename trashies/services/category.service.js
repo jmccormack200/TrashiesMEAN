@@ -1,3 +1,4 @@
+'use strict';
 var Category = require('../models/category.model');
 var Contest = require('../models/contest.model');
 
@@ -32,3 +33,37 @@ exports.createCategory = async function(category) {
         throw Error("Error while creating category");
     }
 }
+
+exports.updateCategory = async function(contest, category) {
+    const id = category.category_id;
+
+    try {
+        var oldCategory = contest.categories.id(id);
+    } catch(e) {
+        throw Error(e.message);
+    }
+
+    if (!oldCategory) {
+        return false;
+    }
+  
+    oldCategory.title = category.title;
+    oldCategory.contestants = category.contestants;
+
+    try {
+        const savedCategory = await contest.save();
+        return savedCategory;
+    } catch(e) {
+        throw Error(e.message);
+    }
+}
+
+exports.deleteCategory = async function(contest, category_id) {
+    try {
+        console.log(contest);
+        contest.categories.id(category_id).remove();
+        contest.save();
+    } catch(e) {
+        throw Error(e.message);
+    }
+}   

@@ -1,12 +1,9 @@
-var mongoose = require('mongoose');
-var mongoosePaginate = require('mongoose-paginate');
+const mongoose = require('mongoose');
+const Contestant = require('./contestant.model');
 
 var CategorySchema = new mongoose.Schema({
     title: String,
-    contestants: [{type: mongoose.Schema.Types.ObjectId, ref: 'Contestants'}]
+    contestants: [Contestant]
 });
 
-CategorySchema.plugin(mongoosePaginate);
-const Category = mongoose.model('Category', CategorySchema);
-
-module.exports = Category;
+module.exports = CategorySchema;
