@@ -3,7 +3,13 @@ var mongoosePaginate = require('mongoose-paginate');
 
 var ContestSchema = new mongoose.Schema({
     title: String,
-    categories: [{type: mongoose.Schema.Types.ObjectId, ref:'Categories'}]
+    categories: [{
+        title: String,
+        contestants: [{
+            name: String,
+            url: String
+        }]
+    }]
 });
 
 ContestSchema.plugin(mongoosePaginate);

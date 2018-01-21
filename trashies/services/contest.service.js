@@ -62,12 +62,15 @@ exports.updateContest = async function(contest) {
 exports.deleteContest = async function(id) {
     try {
         var deleted = await Contest.remove({_id: id});
-        if (deleted.result.n === 0) {
+        console.log("!!!!!!");        
+        console.log(deleted);        
+        console.log(deleted.result);
+        if (deleted.n === 0) {
             throw Error("Contest could not be deleted");
         }
         return deleted;
     } catch(e) {
-        throw Error("Error occured while Deleting the Todo");
+        throw Error(e);
     }
 }
 
