@@ -61,7 +61,7 @@ exports.updateContest = async function(req, res, next) {
     }
 
     try {
-        var updatedContest = await isContext.updateContest(contest);
+        var updatedContest = await ContestService.updateContest(contest);
         return res.status(200).json({
             status: 200,
             data: updatedContest,

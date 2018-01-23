@@ -18,7 +18,7 @@ router.put('/:id', CategoryController.updateCategory);
 router.delete('/:contest_id/:category_id', CategoryController.deleteCategory);
 
 router.get('/:contest_id/:category_id', ContestantController.getContestants);
-router.post('/:contst_id/:category_id', ContestantController.createContestant);
+router.post('/:contest_id/:category_id', ContestantController.addContestant);
 router.put('/:contest_id/:category_id', ContestantController.updateContestant);
 router.delete('/:contest_id/:category_id/:contestant_id', ContestantController.deleteContestant);
 

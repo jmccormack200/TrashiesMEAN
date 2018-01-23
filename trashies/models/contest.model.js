@@ -4,7 +4,7 @@ const Category = require('./category.model');
 
 var ContestSchema = new mongoose.Schema({
     title: String,
-    categories: [Category]
+    categories: [Category.CategorySchema]
 });
 
 ContestSchema.plugin(mongoosePaginate);

@@ -5,4 +5,5 @@ var ContestantSchema = new mongoose.Schema({
     url: String
 });
 
-module.exports = ContestantSchema;
+exports.Contestant = mongoose.model('Contestant', ContestantSchema);
+exports.ContestantSchema = ContestantSchema;
