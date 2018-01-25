@@ -1,0 +1,4 @@
+trashies-admin@0.0.0 /Users/john.mccormack/MEAN/TrashiesMEAN/trashies/trashies-admin
+├── jquery@3.3.1 
+└── UNMET PEER DEPENDENCY popper.js@^1.11.0
+
