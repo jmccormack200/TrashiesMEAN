@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import Category from '../models/category.model';
 
@@ -11,6 +11,9 @@ export class CategoryListComponent implements OnInit {
 
   categoryList: Category[];
   activeCategory: Category;
+
+  @Output()
+  catagoryChange: EventEmitter<Category> = new EventEmitter<Category>();
 
   constructor(private categoryService: CategoryService) {
 
@@ -26,10 +29,15 @@ export class CategoryListComponent implements OnInit {
 
   selectCategory(category: Category) {
     console.log(category.title);
+    this.catagoryChange.emit(category);    
     this.activeCategory = category;
   }
 
   isActive(category: Category) {
     return category === this.activeCategory;
+  }
+
+  getActiveCategory() {
+    return this.activeCategory;
   }
 }

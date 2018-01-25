@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { CategoryListComponent } from './category-list/category-list.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ContestantsComponent } from './contestants/contestants.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    CategoryListComponent
+    CategoryListComponent,
+    ContestantsComponent
   ],
   imports: [
     BrowserModule,

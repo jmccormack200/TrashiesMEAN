@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Category from './models/category.model';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  messageFromCategory:Category = new Category;
+
+  categoryMessage(category: Category) {
+    this.messageFromCategory = category;
+    console.log(category.title);
+  }
 }
