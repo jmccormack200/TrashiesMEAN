@@ -13,7 +13,7 @@ export class CategoryListComponent implements OnInit {
   activeCategory: Category;
 
   @Output()
-  catagoryChange: EventEmitter<Category> = new EventEmitter<Category>();
+  categoryChange: EventEmitter<Category> = new EventEmitter<Category>();
 
   constructor(private categoryService: CategoryService) {
 
@@ -29,7 +29,7 @@ export class CategoryListComponent implements OnInit {
 
   selectCategory(category: Category) {
     console.log(category.title);
-    this.catagoryChange.emit(category);    
+    this.categoryChange.emit(category);    
     this.activeCategory = category;
   }
 

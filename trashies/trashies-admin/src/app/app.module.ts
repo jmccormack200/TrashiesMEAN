@@ -9,13 +9,16 @@ import { CategoryListComponent } from './category-list/category-list.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ContestantsComponent } from './contestants/contestants.component';
+import { NewCategoryComponent } from './new-category/new-category.component';
+import { ContestantService } from './services/contestant.service';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CategoryListComponent,
-    ContestantsComponent
+    ContestantsComponent,
+    NewCategoryComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +27,7 @@ import { ContestantsComponent } from './contestants/contestants.component';
     NgbModule.forRoot()
   ],
   providers: [
+    ContestantService,
     CategoryService
   ],
   bootstrap: [AppComponent]

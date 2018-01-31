@@ -1,15 +1,56 @@
-<div class="todos">
-    <table class="table">
-      <thead class="h">
-        <tr class="h">
-          <th class="h">Title</th>
-          <th class="h">Description</th>
-          <th class="h">Date</th>
-          <th class="h">Status</th>
-          <th class="h">Options</th>
-        </tr>
-      </thead>
-    </table>
+<div>
+  <table class="table">
+    <thead class="h">
+      <tr class="h">
+        <th class="h">Title</th>
+        <th class="h">Url</th>
+      </tr>
+    </thead>
+    <tbody>
 
-    <h2>Title: {{ categoryInput.title }}</h2>
-  </div>
+      <tr (dblclick)="editContestant(contestant)" *ngFor="let contestant of contestants">
+
+        <td>{{contestant.title}}</td>
+        <td>{{contestant.url }}</td>
+
+        <td>
+          <button class="btn btn-primary" (click)="editTodo(todo)">
+            edit
+          </button>
+          <button class="btn btn-danger" (click)="deleteTodo(todo)">
+            delete
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <ng-template #editTD>
+          <td>
+            <input type="text" name="title" id="title" (keypress)="submitContestant($event, todo)" [(ngModel)]="contestant.title"
+              placeholder="Title" class="form-control">
+          </td>
+          <td>
+            <input type="text" name="description" id="description" (keypress)="submitContestant($event, todo)" [(ngModel)]="contestant.url"
+              placeholder="Url" class="form-control">
+          </td>
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <form>
+      <div class="form-row">
+
+        <div class="col-md-5">
+          <input type="text" name="title" id="title" [(ngModel)]="newContestant.title" placeholder="Title" class="form-control">
+        </div>
+        <div class="col-md-5">
+          <input name="description" id="description" [(ngModel)]="newContestant.url" placeholder="Url" class="form-control"
+            id="description">
+        </div>
+        <div class="col-md-2">
+          <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+        </div>
+      </div>
+    </form>
+</div>
