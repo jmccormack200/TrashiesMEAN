@@ -24,4 +24,8 @@ export class ContestantService {
     console.log(contestant); 
       return this.http.post(this.categoryUrl + '/' + category._id, contestant);
   }
+
+  deleteContestant(category: Category, contestant: Contestant): Observable<any> {
+    return this.http.delete(this.categoryUrl + '/' + category._id + '/' + contestant._id);
+  }
 }

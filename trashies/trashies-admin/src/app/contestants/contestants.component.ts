@@ -34,12 +34,20 @@ export class ContestantsComponent {
         console.log("Success");
         this.refreshContestants();
         this.newContestant = new Contestant();
-      })
+      });
   }
 
   refreshContestants() {
     this.contestantService.getContestants(this._category).subscribe( contestants => {
+      console.log("Refreshed");
       this.contestants = contestants;
-    })
+    });
+  }
+
+  deleteContestant(contestant: Contestant) {
+    this.contestantService.deleteContestant(this._category, contestant).subscribe( res => {
+      console.log("deleted");
+      this.refreshContestants();
+    });
   }
 }
