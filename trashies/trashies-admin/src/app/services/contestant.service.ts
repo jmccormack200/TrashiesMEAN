@@ -28,4 +28,9 @@ export class ContestantService {
   deleteContestant(category: Category, contestant: Contestant): Observable<any> {
     return this.http.delete(this.categoryUrl + '/' + category._id + '/' + contestant._id);
   }
+
+  editContestant(category: Category, editedContestant: Contestant): Observable<any> {
+    console.log(editedContestant);
+    return this.http.put(this.categoryUrl + '/' + category._id, editedContestant);
+  }
 }

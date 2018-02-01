@@ -22,6 +22,7 @@ export class ContestantsComponent {
 
   _category: Category;
   contestants: Contestant[];
+  editContestants: Contestant[] = [];
 
   public newContestant: Contestant = new Contestant()
 
@@ -46,8 +47,20 @@ export class ContestantsComponent {
 
   deleteContestant(contestant: Contestant) {
     this.contestantService.deleteContestant(this._category, contestant).subscribe( res => {
-      console.log("deleted");
       this.refreshContestants();
     });
+  }
+
+  editContestant(contestant: Contestant) {
+    if(this.contestants.includes(contestant)) {
+      if (!this.editContestants.includes(contestant)) {
+        this.editContestants.push(contestant);
+      } else {
+        this.editContestants.splice(this.editContestants.indexOf(contestant), 1);
+        this.contestantService.editContestant(this._category, contestant).subscribe( res => {
+          this.refreshContestants();
+        })
+      }
+    }
   }
 }

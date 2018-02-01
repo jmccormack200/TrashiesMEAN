@@ -10,8 +10,15 @@
 
       <tr (dblclick)="editContestant(contestant)" *ngFor="let contestant of contestants">
 
-        <td>{{contestant.title}}</td>
-        <td>{{contestant.url }}</td>
+          <ng-container *ngIf="!editContestants.includes(contestant); else editTD">              
+            <td>{{contestant.title}}</td>
+            <td>{{contestant.url }}</td>
+          </ng-container>
+
+          <ng-template #editTD>
+              <td><input type="text" name="title" id="title" [(ngModel)]="contestant.title" placeholder="Title" class="form-control"></td>
+              <td><input type="text" name="url" id="url" [(ngModel)]="contestant.url" placeholder="Contestant" class="form-control"></td>
+          </ng-template>
 
         <td>
           <button class="btn btn-primary" (click)="editContestant(contestant)">
