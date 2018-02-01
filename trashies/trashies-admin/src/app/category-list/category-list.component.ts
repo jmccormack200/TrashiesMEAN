@@ -11,6 +11,7 @@ export class CategoryListComponent implements OnInit {
 
   categoryList: Category[];
   activeCategory: Category;
+  editableCategory: Category = new Category;
 
   @Output()
   categoryChange: EventEmitter<Category> = new EventEmitter<Category>();
@@ -39,5 +40,14 @@ export class CategoryListComponent implements OnInit {
 
   getActiveCategory() {
     return this.activeCategory;
+  }
+
+  editCategory(category: Category) {
+    this.editableCategory = category;
+  }
+
+  onEnter(category: Category) {
+    this.editableCategory = null;
+    console.log(category);
   }
 }

@@ -2,7 +2,18 @@
 <br/>
 <ul class="list-group list-group-flush">
   <li class="list-group-item" (click)="selectCategory(category)" *ngFor="let category of categoryList" [ngClass]="{active: isActive(category)}">
-    {{category.title}}
+    <div class="row" *ngIf="editableCategory !== category; else editCat">
+      <div class="col">
+          {{category.title}}          
+      </div>
+      <div class="col "></div>
+      <div class="col">
+          <button class="btn btn-light btn-small" *ngIf="isActive(category)" (click)="editCategory(category)">edit</button>          
+      </div>
+    </div>
+    <ng-template #editCat>
+        <td><input type="text" name="title" [(ngModel)]="category.title" placeholder="Title" class="form-control" (keyup.enter)="onEnter(category)"></td>
+    </ng-template>
   </li>
   <li class="list-group-item">
     <button type="button" class="btn btn-primary">Add</button>
