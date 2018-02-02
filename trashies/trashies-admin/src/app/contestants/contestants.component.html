@@ -10,15 +10,21 @@
 
       <tr (dblclick)="editContestant(contestant)" *ngFor="let contestant of contestants">
 
-          <ng-container *ngIf="!editContestants.includes(contestant); else editTD">              
-            <td>{{contestant.title}}</td>
-            <td>{{contestant.url }}</td>
-          </ng-container>
+        <ng-container *ngIf="!editContestants.includes(contestant); else editTD">
+          <td>{{contestant.title}}</td>
+          <td>
+            <a href="http://{{ contestant.url }}">{{contestant.url | ellipsis: 25}}</a>
+          </td>
+        </ng-container>
 
-          <ng-template #editTD>
-              <td><input type="text" name="title" id="title" [(ngModel)]="contestant.title" placeholder="Title" class="form-control"></td>
-              <td><input type="text" name="url" id="url" [(ngModel)]="contestant.url" placeholder="Contestant" class="form-control"></td>
-          </ng-template>
+        <ng-template #editTD>
+          <td>
+            <input type="text" name="title" id="title" [(ngModel)]="contestant.title" placeholder="Title" class="form-control">
+          </td>
+          <td>
+            <input type="text" name="url" id="url" [(ngModel)]="contestant.url" placeholder="Contestant" class="form-control">
+          </td>
+        </ng-template>
 
         <td>
           <button class="btn btn-primary" (click)="editContestant(contestant)">
@@ -32,8 +38,8 @@
       <tr>
         <ng-template #editTD>
           <td>
-            <input type="text" name="title" id="title" (keypress)="submitContestant($event, todo)" [(ngModel)]="contestant.title"
-              placeholder="Title" class="form-control">
+            <input type="text" name="title" id="title" (keypress)="submitContestant($event, todo)" [(ngModel)]="contestant.title" placeholder="Title"
+              class="form-control">
           </td>
           <td>
             <input type="text" name="description" id="description" (keypress)="submitContestant($event, todo)" [(ngModel)]="contestant.url"
@@ -46,18 +52,17 @@
 
 
   <form>
-      <div class="form-row">
+    <div class="form-row">
 
-        <div class="col-md-5">
-          <input type="text" name="title" id="title" [(ngModel)]="newContestant.title" placeholder="Title" class="form-control">
-        </div>
-        <div class="col-md-5">
-          <input name="description" id="description" [(ngModel)]="newContestant.url" placeholder="Url" class="form-control"
-            id="description">
-        </div>
-        <div class="col-md-2">
-          <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
-        </div>
+      <div class="col-md-5">
+        <input type="text" name="title" id="title" [(ngModel)]="newContestant.title" placeholder="Title" class="form-control">
       </div>
-    </form>
+      <div class="col-md-5">
+        <input name="description" id="description" [(ngModel)]="newContestant.url" placeholder="Url" class="form-control" id="description">
+      </div>
+      <div class="col-md-2">
+        <button type="submit" class="btn btn-primary" (click)="create()">Add</button>
+      </div>
+    </div>
+  </form>
 </div>

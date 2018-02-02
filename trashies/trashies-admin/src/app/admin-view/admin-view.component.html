@@ -1,0 +1,12 @@
+<body>
+  <div class="row">
+    <div class="col-md-4">
+        <h1>Place Holder</h1>        
+      <category-list (categoryChange)="categoryMessage($event)" [editable]="false"></category-list>
+      <button class="btn btn-secondary btn-lg btn-block" (click)="startContest()">start</button>      
+    </div>
+    <div class="col-md-8 bg-light">
+      <contestants [category]="messageFromCategory"></contestants>
+    </div>
+  </div>
+</body>

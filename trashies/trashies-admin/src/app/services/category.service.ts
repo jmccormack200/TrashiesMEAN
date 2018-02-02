@@ -18,4 +18,11 @@ export class CategoryService {
         return res["data"] as Category[];
       })
   }
+
+  editCategory(category: Category): Observable<any> {
+    console.log("!!!!!!");
+    console.log(category);
+    console.log("!!!!!!");
+    return this.http.put(this.categoryUrl, category);
+  }
 }

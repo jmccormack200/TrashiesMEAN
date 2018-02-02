@@ -7,11 +7,5 @@ import Category from './models/category.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
-  messageFromCategory:Category = new Category;
 
-  categoryMessage(category: Category) {
-    this.messageFromCategory = category;
-    console.log(category.title);
-  }
 }

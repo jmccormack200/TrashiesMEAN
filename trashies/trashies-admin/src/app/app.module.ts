@@ -11,6 +11,17 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ContestantsComponent } from './contestants/contestants.component';
 import { NewCategoryComponent } from './new-category/new-category.component';
 import { ContestantService } from './services/contestant.service';
+import { EllipsisPipe } from './pipes/ellipsis.pipe';
+import { AdminViewComponent } from './admin-view/admin-view.component';
+import { PresenterViewComponent } from './presenter-view/presenter-view.component';
+import { PresentationViewComponent } from './presentation-view/presentation-view.component';
+import { RouterModule, Routes } from '@angular/router';
+
+const appRoutes: Routes = [
+  { path: '', component: AdminViewComponent },
+  { path: 'presenter', component: PresenterViewComponent },
+  { path: 'presentation', component: PresentationViewComponent }
+]
 
 
 @NgModule({
@@ -18,13 +29,21 @@ import { ContestantService } from './services/contestant.service';
     AppComponent,
     CategoryListComponent,
     ContestantsComponent,
-    NewCategoryComponent
+    NewCategoryComponent,
+    EllipsisPipe,
+    AdminViewComponent,
+    PresenterViewComponent,
+    PresentationViewComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    RouterModule.forRoot(
+      appRoutes,
+      { enableTracing: true}
+    )
   ],
   providers: [
     ContestantService,
