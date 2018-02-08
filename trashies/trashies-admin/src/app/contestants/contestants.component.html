@@ -10,7 +10,7 @@
 
       <tr (dblclick)="editContestant(contestant)" *ngFor="let contestant of contestants">
 
-        <ng-container *ngIf="!editContestants.includes(contestant); else editTD">
+        <ng-container *ngIf="!editContestants.includes(contestant) && !allowedits; else editTD">
           <td>{{contestant.title}}</td>
           <td>
             <a href="http://{{ contestant.url }}">{{contestant.url | ellipsis: 25}}</a>
@@ -26,7 +26,7 @@
           </td>
         </ng-template>
 
-        <td>
+        <td *ngIf="allowEdits">
           <button class="btn btn-primary" (click)="editContestant(contestant)">
             edit
           </button>
@@ -52,7 +52,7 @@
 
 
   <form>
-    <div class="form-row">
+    <div class="form-row" *ngIf="allowEdits">
 
       <div class="col-md-5">
         <input type="text" name="title" id="title" [(ngModel)]="newContestant.title" placeholder="Title" class="form-control">

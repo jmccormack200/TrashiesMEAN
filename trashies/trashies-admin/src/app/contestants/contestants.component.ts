@@ -16,6 +16,9 @@ export class ContestantsComponent {
     this.contestants = this._category.contestants;
   }
 
+  @Input()
+  allowEdits: boolean = false;
+
   get category() {
     return this._category;
   }
@@ -52,6 +55,9 @@ export class ContestantsComponent {
   }
 
   editContestant(contestant: Contestant) {
+    if (this.allowEdits === false) {
+      return;
+    }
     if(this.contestants.includes(contestant)) {
       if (!this.editContestants.includes(contestant)) {
         this.editContestants.push(contestant);

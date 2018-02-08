@@ -1,7 +1,6 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { CategoryService } from '../services/category.service';
 import Category from '../models/category.model';
-import { Input } from '@angular/core/src/metadata/directives';
 
 @Component({
   selector: 'category-list',
@@ -15,7 +14,7 @@ export class CategoryListComponent implements OnInit {
   editableCategory: Category = new Category;
 
   @Input()
-  editable: boolean = true;
+  allowEdits: boolean = false;
 
   @Output()
   categoryChange: EventEmitter<Category> = new EventEmitter<Category>();
