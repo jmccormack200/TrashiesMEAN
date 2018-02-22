@@ -16,11 +16,15 @@ import { AdminViewComponent } from './admin-view/admin-view.component';
 import { PresenterViewComponent } from './presenter-view/presenter-view.component';
 import { PresentationViewComponent } from './presentation-view/presentation-view.component';
 import { RouterModule, Routes } from '@angular/router';
+import { LandingComponent } from './landing/landing.component';
+import { VoterNameComponent } from './voter-name/voter-name.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AdminViewComponent },
+  { path: '', component: LandingComponent },
+  { path: 'admin', component: AdminViewComponent},
   { path: 'presenter', component: PresenterViewComponent },
-  { path: 'presentation', component: PresentationViewComponent }
+  { path: 'presentation', component: PresentationViewComponent },
+  { path: 'voter-name', component: VoterNameComponent }
 ]
 
 
@@ -33,7 +37,9 @@ const appRoutes: Routes = [
     EllipsisPipe,
     AdminViewComponent,
     PresenterViewComponent,
-    PresentationViewComponent
+    PresentationViewComponent,
+    LandingComponent,
+    VoterNameComponent
   ],
   imports: [
     BrowserModule,

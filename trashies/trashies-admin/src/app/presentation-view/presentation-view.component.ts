@@ -1,7 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import Category from '../models/category.model';
-import { Event } from '_debugger';
 
 @Component({
   selector: 'app-presentation-view',

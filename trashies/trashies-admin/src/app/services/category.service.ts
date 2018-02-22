@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import Category from '../models/category.model';
 
 import 'rxjs/add/operator/map';
+import { BoundDirectivePropertyAst } from '@angular/compiler';
 
 @Injectable()
 export class CategoryService {
@@ -20,9 +21,17 @@ export class CategoryService {
   }
 
   editCategory(category: Category): Observable<any> {
-    console.log("!!!!!!");
-    console.log(category);
-    console.log("!!!!!!");
     return this.http.put(this.categoryUrl, category);
+  }
+
+  openCategoryForVoting(category: Category): Observable<any> {
+    const body = {
+      category_id: category._id
+    };
+    return this.http.post(this.categoryUrl + 'open_voting', body);
+  }
+
+  closeVoting(): Observable<any> {
+    return this.http.delete(this.categoryUrl + 'closevoting');
   }
 }
